@@ -1,0 +1,197 @@
+{% extends 'display.html' %} {% block content%}
+<h1 class="mt-4" style="color: #d32278ff">Charts</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Analytics charts</li>
+</ol>
+<div class="row">
+  <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h3 class="card-title mb-0">All used hashtags</h3>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <figure class="highcharts-figure">
+                <div id="container-word"></div>
+                <p class="highcharts-description">
+                    This figure is showing all used hashtags in our collected data
+                </p>
+            </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h3 class="card-title mb-0">
+          Prcentage of verified and unverified users
+        </h3>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <figure class="highcharts-figure">
+                <div id="container-3D"></div>
+                <p class="highcharts-description">
+                  This pie chart is showing the percentage of verified and unverified users
+                </p>
+            </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-12 col-xxl-6 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h3 class="card-title mb-0">
+          Top influncer with their top-hashtags
+        </h3>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <div id="container-relation"></div>
+              <p>This sanky graph is showing top influncers according to the number of shared tweets with their top hashtags used in their tweets </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        </h3 class="card-title mb-0">
+         Account created date
+        </h3>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <div id="container-age"></div>
+              <p>This bar graph is showing number of users with respect to their created date since {{createdaccount}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          Top tweets
+        </h5>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <div id="container-funnel"></div>
+              <p> This funnel is shared name of users who shared the top tweets that has the maximum number of  "replyCount", "retweetCount", and "likeCount" compared to other shared tweets
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-xxl-6 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          Top Influncer
+        </h5>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-12">
+            <div class="chart chart-xs">
+              <div class="card-body">
+                <div class="chart-pie pt-4">
+                  <h4 class="text-center">Name of top influncers</h4>
+                  <div id="chartdiv"></div>
+                  <p>This pie chart is showing name of top influncers with the percentage of their shared tweets</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-xxl-6 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          Number of shared tweets
+        </h5>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <div id="container-year"></div>
+              <p>This graph is showing number of shared tweets as function of years</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-xxl-6 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          sentiment analysis
+        </h5>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <div id="chartdiv3"></div>
+              <p>This pie chart is showing the classification of data into three categories Positive,negative,and neutral according to tweet text  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-xxl-6 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          Top influncers profile
+        </h5>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <div id="chartdiv4"></div>
+              <p>This bar graph is showing top influncers with their url image</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="static/charts/graph.js"></script>
+{% endblock %}

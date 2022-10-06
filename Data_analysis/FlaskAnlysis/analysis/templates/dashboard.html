@@ -1,0 +1,376 @@
+{% extends 'display.html' %} {% block content%}
+<h1 class="mt-4" style="color: #d32278ff">Dashboard</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Analytics Dashboard</li>
+</ol>
+
+<div class="row">
+  <div class="col-xl-12 col-xxl-5 d-flex">
+    <div class="w-100">
+      <div class="row ">
+
+        <div class="col-sm-5">
+
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col mt-0">
+                  <h5 class="card-title">Number of collected tweets</h5>
+                </div>
+                <div class="col-auto">
+                  <div class="stat text-primary">
+                    <i class="fas fa-commenting align-right"></i>
+                  </div>
+                </div>
+              </div>
+              <h1 class="mt-1 mb-3">{{ totalnumber }}</h1>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="row"  >
+                <div class="col mt-0">
+                  <h5 class="card-title">Percentage of verified user</h5>
+                </div>
+                <div class="col-auto">
+                  <div class="stat text-primary">
+                    <i class="align-middle" data-feather="users"></i>
+                  </div>
+                </div>
+              </div>
+              <h1 class="mt-1 mb-3">{{percentage}} %</h1>
+              <div class="mb-0">
+                <div class="col">
+                  <div class="progress progress-sm mr-2">
+                    <div
+                      class="progress-bar progress-bar-striped .bg-danger.bg-gradient"
+                      role="progressbar"
+                      style="width: {{percentage}}% "
+                      aria-valuenow="50"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>  
+
+        </div>
+        <div class="col-sm-7">
+          <div class="card">
+          <div class="card-body">
+            <div class="row"  style="height:100%">
+              <div class="col mt-0">
+                <h5 class="card-title">sentiment analysis</h5>
+              </div>
+              <div class="col-auto">
+                <div class="stat text-primary">
+                  <i class="fas fa-commenting align-right"></i>
+                </div>
+              </div>
+            </div>
+            {%for i in range(0,len1) %}
+            <h3>{{sentiment[i][0]}}</h3> 
+             <h5 class="mt-1 mb-3">{{sentiment[i][1]}} %</h5>
+            <div class="mb-0">
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div
+                    class="progress-bar progress-bar-striped .bg-danger.bg-gradient"
+                    role="progressbar"
+                    style="width: {{sentiment[i][1]}}% "
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xl-12 col-xxl-7">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Number of shared tweet</h5>
+      </div>
+      <div class="card-body py-3">
+        <div class="chart chart-sm">
+          <canvas id="chartjs-dashboard-line"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+        <h3 class="card-title mb-0">Source Label</h3>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="py-3">
+            <div class="chart chart-xs">
+              <div id="createddate"></div>
+              <p>This pie chart is showing the percentage of source lab  of all users </p>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Calendar</h5>
+      </div>
+      <div class="card-body d-flex">
+        <div class="align-self-center w-100">
+          <div class="chart">
+            <div id="datetimepicker-dashboard"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="card mb-4">
+    <div class="card-header">Users Information</div>
+    <div class="card-body">
+      <table id="datatablesSimple">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Top hashtags</th>
+            <th>Verified</th>
+            <th>followers</th>
+            <th>friends</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in range(0, len)%}
+          <tr>
+            <td class="d-none d-xl-table-cell">{{topinfluncer[i][0]}}</td>
+            <td class="d-none d-xl-table-cell">{{topinfluncer[i][1]}}</td>
+            <td>
+              <span class="badge bg-success">{{topinfluncer[i][2]}}</span>
+            </td>
+
+            <td class="d-none d-md-table-cell">{{topinfluncer[i][3]}}</td>
+            <td class="d-none d-md-table-cell">{{topinfluncer[i][4]}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script src="static/js/app.js"></script>
+
+<script>
+  let cnt = [];
+  let year = [];
+
+  $.getJSON("/CaseSearch", function (getdata) {
+    for (var i = 0; i < getdata.length; i++) {
+      year[i] = getdata[i]["year"];
+      cnt[i] = getdata[i]["count"];
+    }
+    dataread(year, cnt);
+  });
+
+  function dataread(year, cnt) {
+    var ctx = document
+      .getElementById("chartjs-dashboard-line")
+      .getContext("2d");
+    var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+    gradient.addColorStop(0, "rgba(61, 192, 184, 0.67)");
+    gradient.addColorStop(1, "rgba(3, 90, 78, 0.5)");
+    // Line chart
+    new Chart(document.getElementById("chartjs-dashboard-line"), {
+      type: "line",
+      data: {
+        labels: year,
+        datasets: [
+          {
+            label: "tweets",
+            fill: true,
+            backgroundColor: gradient,
+            borderColor: "rgba(18,114,109,0.93)",
+            data: cnt,
+          },
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
+        },
+        tooltips: {
+          intersect: false,
+        },
+        hover: {
+          intersect: true,
+        },
+        plugins: {
+          filler: {
+            propagate: false,
+          },
+        },
+        scales: {
+          xAxes: [
+            {
+              reverse: true,
+              gridLines: {
+                color: "rgba(0,0,0,0.0)",
+              },
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                stepSize: 1000,
+              },
+              display: true,
+              borderDash: [3, 3],
+              gridLines: {
+                color: "rgba(0,0,0,0.0)",
+              },
+            },
+          ],
+        },
+      },
+    });
+  }
+</script>
+
+<script>
+
+
+  $.getJSON("/sourcelable", function (data) {
+   
+    read(data);
+  });
+
+  function read(data) {
+    am5.ready(function() {
+
+      // Create root element
+      // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+      var root = am5.Root.new("createddate");
+      
+      // Set themes
+      // https://www.amcharts.com/docs/v5/concepts/themes/
+      root.setThemes([
+        am5themes_Animated.new(root)
+      ]);
+  
+      // Create chart
+      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+      var chart = root.container.children.push(am5percent.PieChart.new(root, {
+        radius: am5.percent(90),
+        innerRadius: am5.percent(50),
+        layout: root.horizontalLayout
+      }));
+      
+      // Create series
+      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+      var series = chart.series.push(am5percent.PieSeries.new(root, {
+        name: "Series",
+        valueField: "count",
+        categoryField: "sourcelabel"
+      }));
+      
+      
+      // Set data
+      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+      series.data.setAll(data);
+      
+      // Disabling labels and ticks
+      series.labels.template.set("visible", false);
+      series.ticks.template.set("visible", false);
+     
+ 
+
+      // Adding gradients
+      series.slices.template.set("strokeOpacity", 0);
+      series.slices.template.set("fillGradient", am5.RadialGradient.new(root, {
+        stops: [{
+          brighten: -0.8
+        }, {
+          brighten: -0.8
+        }, {
+          brighten: -0.5
+        }, {
+          brighten: 0
+        }, {
+          brighten: -0.5
+        }]
+      }));
+      
+      // Create legend
+      // https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+      var legend = chart.children.push(
+        am5.Legend.new(root, {
+          centerY: am5.percent(50),
+          y: am5.percent(50),
+          layout: root.verticalLayout,
+        })
+      );
+      // set value labels align to right
+      legend.valueLabels.template.setAll({ textAlign: "right" });
+      // set width and max width of labels
+      legend.labels.template.setAll({
+        maxWidth: 140,
+        width: 140,
+        oversizedBehavior: "wrap",
+      });
+
+      legend.data.setAll(series.dataItems);
+      
+          // Play initial series animation
+      // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+      series.appear(1000, 100);
+      
+      }); 
+    }
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
+    var defaultDate =
+      date.getUTCFullYear() +
+      "-" +
+      (date.getUTCMonth() + 1) +
+      "-" +
+      date.getUTCDate();
+    document.getElementById("datetimepicker-dashboard").flatpickr({
+      inline: true,
+      prevArrow: '<span title="Previous month">&laquo;</span>',
+      nextArrow: '<span title="Next month">&raquo;</span>',
+      defaultDate: defaultDate,
+    
+    });
+  });
+</script>
+
+{% endblock %}

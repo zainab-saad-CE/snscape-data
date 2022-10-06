@@ -1,0 +1,113 @@
+{% extends 'base.html' %} {% block title%} Register page {% endblock%} {% block
+content%} {% if message %}
+<div class="alert alert-secondary" role="alert">
+  <p>{{ message }}</p>
+</div>
+{% endif %}
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section">Register</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="wrap d-md-flex">
+          <div class="img">
+            <img
+              class="img-fluid w-100 d-none d-sm-block"
+              src="static/main-1/images/login.jpg"
+            />
+          </div>
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-4">Register</h3>
+              </div>
+              <div class="w-100">
+                <p class="social-media d-flex justify-content-end">
+                  <a
+                    href="#"
+                    class="social-icon d-flex align-items-center justify-content-center"
+                    ><span class="fa fa-facebook"></span
+                  ></a>
+                  <a
+                    href="#"
+                    class="social-icon d-flex align-items-center justify-content-center"
+                    ><span class="fa fa-twitter"></span
+                  ></a>
+                </p>
+              </div>
+            </div>
+            <form method="POST" class="form-register">
+              <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Register</legend>
+                <!--render form as paragraph-->
+              </fieldset>
+
+              <div class="form-group">
+                <label for="Fullname">Full name</label>
+                <input
+                  name="fullname"
+                  class="form-control"
+                  id="inputFullName"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter full name"
+                />
+                <small id="fullName" class="form-text text-muted"
+                  >Please enter your full name(First name and Last name)</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="InputEmail">Email address</label>
+                <input
+                  name="email"
+                  class="form-control"
+                  id="InputEmail"
+                  placeholder="Enter email"
+                />
+                <small id="emailHelp" class="form-text text-muted"
+                  >We'll never share your email with anyone else.</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="InputPassword">Password</label>
+                <input
+                  type="password"
+                  name="password1"
+                  class="form-control"
+                  id="InputPassword"
+                  placeholder="Password"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="InputPassword2">Repeat Password</label>
+                <input
+                  type="password"
+                  name="password2"
+                  class="form-control"
+                  id="InputPassword2"
+                  placeholder="Repeat Password"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Submit
+              </button>
+              <p> login after getting your Account</p>
+              <a  href="/">login</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="main/js/jquery-3.3.1.min.js"></script>
+<script src=" main/js/popper.js"></script>
+<script src="main/js/bootstrap.min.js"></script>
+<script src="main/js/main.js"></script>
+
+{%endblock%}
